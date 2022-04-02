@@ -2,8 +2,8 @@
 $err_username = $err_fjalekalimi = $err = $err1 = $sukses = "";
 if(isset($_POST["hyr1"])){
     if(!empty($_POST['username1']) && !empty($_POST['password1'])){
-        $user = $_POST['username1'];
-        $pass = $_POST['password1'];
+        $user = real_escape_string($_POST['username1']);
+        $pass = real_escape_string($_POST['password1']);
 
         //DB Connection
         require "Connection.php";

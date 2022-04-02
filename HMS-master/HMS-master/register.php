@@ -1,5 +1,5 @@
 <?php
-//    require "Connection.php";
+   require "Connection.php";
 $error_username=$error_fjalekalimi=$error_konfirmo_fjalekalimin=$rregj_sukses="";
 if(isset($_POST['rregjistrohu'])){
     $emri = $_POST['emri'];
@@ -11,16 +11,17 @@ if(isset($_POST['rregjistrohu'])){
     $fjalekalimi = $_POST['fjalekalimi'];
     $konfirmo_fjalekalimin = $_POST['konfirmo_fjalekalim'];
     $gjinia = $_POST['gjinia'];
-
-    require "Connection.php";
-    //nese form eshte submitted atehere validohen fushat input
+    $image = $_FILES['image']['name'];
+    $image_size = $_FILES['image']['size'];
+    $image_tmp_name = $_FILES['image']['tmp_name'];
+    $image_folder = 'uploaded_img/'.$image;
+   
     if(empty($username)){
         $error_username = 'Ju lutem plotesoni username-in !';
     }
 
     if(empty($fjalekalimi)){
     $error_fjalekalimi='Ju lutem plotësoni fjalëkalimin !';
-    // echo "<script>alert('gabiim');</script>";
     }
 
     $uppercase=preg_match('@[A-Z]@',$fjalekalimi);
@@ -43,9 +44,10 @@ if(isset($_POST['rregjistrohu'])){
         if($numrows == 0){
             if(!empty($username) && !empty($fjalekalimi) && !empty($konfirmo_fjalekalimin)){
                 if($fjalekalimi == $konfirmo_fjalekalimin){
-                    $sql = "INSERT INTO user_pacient(emri, mbiemri, username, nr_telit, email, datelindja, fjalekalimi, gjinia ) VALUES ('$emri', '$mbiemri', '$username', '$nr_telit', '$email', '$datelindja', '$fjalekalimi', '$gjinia' )";
+                    $sql = "INSERT INTO user_pacient(emri, mbiemri, username, nr_telit, email, datelindja, fjalekalimi, gjinia, image ) VALUES ('$emri', '$mbiemri', '$username', '$nr_telit', '$email', '$datelindja', '$fjalekalimi', '$gjinia', '$image')";
                     $result = mysqli_query($con, $sql);
                     if($result){
+                        move_uploaded_file($image_tmp_name, $image_folder);
                         $rregj_sukses = "Llogaria juaj u krijua me sukses!";
                         header( "refresh:3;url=login.php" );   
                         
@@ -59,6 +61,7 @@ if(isset($_POST['rregjistrohu'])){
         }
     }
 }
+    
 
 ?>
 
@@ -92,6 +95,7 @@ var checkPassword = function() {
     document.getElementById('message').innerHTML = 'Fjalëkalimi nuk përshtatet !';
   }
 }
+
 </script>
 
 </head>
@@ -107,7 +111,7 @@ var checkPassword = function() {
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <h4 style="position:relative;bottom:25px;color:red; padding-top:20px;"><?php echo $rregj_sukses?></h4>
                     <h3 class="login-heading" style="font-weight: bold;">REGJISTROHU SI PACIENT</h3>
-                    <form method="post" action="register.php">
+                    <form method="post" action="register.php" enctype="multipart/form-data">
                 
                     <div class="row login-form">
                         <div class="col-md-6">
@@ -122,21 +126,15 @@ var checkPassword = function() {
                             <div class="form-group">
                                 <input type="email" class="form-control" placeholder="Email-i *" name="email"  />
                             </div>
+
                             <div class="form-group">
                                 <input type="password" class="form-control" placeholder="Password-i *" id="fjalekalimi" name="fjalekalimi" />
                                 </label><span class="errors"><?php echo $error_fjalekalimi;?></span>
                             </div>
+                            
                             <div class="form-group">
-                                <div class="maxl">
-                                    <label class="radio inline"> 
-                                        <input type="radio" name="gjinia" value="Male" checked>
-                                        <span style="color:black; font-weight:bold;"> Mashkull </span> 
-                                    </label>
-                                    <label class="radio inline"> 
-                                        <input type="radio" name="gjinia" value="Female">
-                                        <span style="color:black; font-weight:bold;">Femer </span> 
-                                    </label>
-                                </div>      
+                                <input type="password" class="form-control"  id="konfirmo_fjalekalim" placeholder="Konfirmo Password " name="konfirmo_fjalekalim" onkeyup='checkPassword();'/></span>
+                                </label><span id='message'></span></span>
                             </div>
                            
                         </div>
@@ -152,12 +150,30 @@ var checkPassword = function() {
                                   
                             <div class="form-group">
                                 <span style="color: white;">Datelindja : <input type="date" id="birthday" name="datelindja"></span> 
-                            </div>
-                        
+                            </div> 
+
                             <div class="form-group">
-                                <input type="password" class="form-control"  id="konfirmo_fjalekalim" placeholder="Konfirmo Password " name="konfirmo_fjalekalim" onkeyup='checkPassword();'/></span>
-                                </label><span id='message'></span></span>
+                                <div class="maxl">
+                                    <label class="radio inline"> 
+                                        <input type="radio" name="gjinia" value="Male" checked>
+                                        <span style="color:black; font-weight:bold;"> Mashkull </span> 
+                                    </label>
+                                    <label class="radio inline"> 
+                                        <input type="radio" name="gjinia" value="Female">
+                                        <span style="color:black; font-weight:bold;">Femer </span> 
+                                    </label>
+                                </div>      
                             </div>
+
+                            <!-- <div class="form-group" id = "fileupload">
+                                <input type="file" name = "profilePicture">
+                                <input type="submit" name = "submit" value ="Ngarko !">
+                            </div> -->
+
+                            <div class="form-group" id = "fileupload">
+                            <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png">
+                            </div>
+                            
                         </div>
                     </div>
                         <input type="submit" class="btnRegister" name="rregjistrohu"  value="Regjistrohu"/> 
