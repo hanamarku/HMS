@@ -44,57 +44,7 @@
 </head>
 
 <body>
-    <script src="js/javascriptProgress.js"></script>
-    <!-- BACK TO TOP -->
-    <div id="progress">
-        <span id="progress-value">&#x1F815;</span>
-    </div>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #61a5c2;">
-        <div class="container">
-            <img src="images/logo.png" alt="..." height="56">
-            <p class="navbar-brand mt-4" style="font-family: Pacifico;font-size: 25px;font-weight: bold;">Health &#32; Heal</p>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link">
-                        <i class="bi bi-house-door-fill " style="color:rgb(0, 0, 0);"></i>
-                    </a>
-                    <a style="color:rgb(0, 0, 0);" href="#about" class="nav-item nav-link">Rreth Nesh</a>
-                    <div class="nav-item dropdown">
-                        <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Departamentet</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="#" class="dropdown-item">Dermatologji</a>
-                            <a href="#" class="dropdown-item">Kardiologji</a>
-                            <a href="#" class="dropdown-item">Kirurgji</a>
-                            <a href="#" class="dropdown-item">Pediatri</a>
-                            <a href="#" class="dropdown-item">Urologji</a>
-                        </div>
-                    </div>
-                    <form class="navbar-form form-inline">
-                        <div class="input-group search-box">
-                            <input type="text" id="search" class="form-control" placeholder="Kerko ketu...">
-                            <div class="input-group-append">
-                                <span class="input-group-text">
-                                    <i class="bi bi-search"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="navbar-nav ml-auto action-buttons">
-                        <div class="nav-item dropdown">
-                            <a style="color:rgb(0, 0, 0);" href="login.php" class="nav-link ">Hyr</a>
-                        </div>
-                        <div class="nav-item dropdown">
-                            <a href="register.php" class="btn btn-primary ">Regjistrohu</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <?php include "header.html"?>
 
 
     <!-- CAROUSEL -->
@@ -384,23 +334,9 @@
             </div>
         </section> -->
     <!-- footer -->
-    <div class="container-fluid" style="background-color:#61a5c2;">
-        <footer class="d-flex flex-wrap justify-content-center align-items-center py-0 my-0  width:100%">
-            <div class="row">
-                <div class="col-2"><i class="bi bi-telephone-inbound-fill" style="font-size:15px;color:#012a4a"></i><br> 0694298902</a>
-                </div>
-                <div class="col-2"><a href="https://www.facebook.com/profile.php?id=100079049119580" target="blank" rel="noopener"><i class="bi bi-facebook" style="font-size:20px;color:#012a4a"></i> </a></div>
-                <div class="col-2"> <a href="https://www.instagram.com/youhealhospital/" target="blank" rel="noopener"><i class="bi bi-instagram" style="font-size:20px;color:#012a4a"></i></a> </div>
-                <div class="col-2"> <a href="https://youtube.com/channel/UCwJAExpigHzUHQNhzOPLcww" target="blank" rel="noopener"><i class="bi bi-youtube" style="font-size:20px;color:#012a4a"></i></a></div>
-                <div class="col-2"><a href="https://twitter.com/YouhealH?s=08" target="blank" rel="noopener"><i class="bi bi-twitter" style="font-size:20px;color:#012a4a"></i></a></div>
-                <div class="col-2"><a href="https://g.page/FSHNatyres?share" target="blank" rel="noopener"><i class="bi bi-geo-alt-fill " style="font-size:20px;color:#012a4a"></i></a>
-                </div>
-                <div class="row">
-                    <h6 style="color:aliceblue;text-align: center;padding-top:20px;font-size:12px;">&copy;Spitali YouHeal.Të gjitha të drejtat e rezervuara.-Politikat e privatësisë</h6>
-                </div>
-            </div>
-        </footer>
-    </div>
+    <?php include "footer.html"?>
+
+
     <!-- Vendor JS Files -->
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/glightbox/js/glightbox.min.js"></script>
