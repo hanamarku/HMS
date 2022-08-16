@@ -1,2 +1,0 @@
-# HMS
-Programim ne Web
