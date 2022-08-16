@@ -1,0 +1,59 @@
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="https://github.com/rubyeffect/easy_fill/tree/master/lib/easy_fill-0.0.1.min.js"></script>
+    <title>Rezervimi</title>
+    <link href="css/reservation.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="container">
+        <!--This is a division tag for body container-->
+        <div id="body_header">
+            <!--This is a division tag for body header-->
+            <h1>Rezervim Takimi Mjekesor</h1>
+            <p>Bejini me te thjeshta vizitat tuaja</p>
+
+        </div>
+        <form action="index.html" method="post">
+            <fieldset>
+                <legend><span class="number">1</span>Detajet tuaja baze</legend>
+                <label for="name">Emri*:</label>
+                <input type="text" id="name" name="user_name" placeholder="Emer" required pattern="[a-zA-Z0-9]+">
+
+                <label for="name">Mbiemri*:</label>
+                <input type="text" id="surname" name="surname" placeholder="Mbiemer" required pattern="[a-zA-Z0-9]+">
+
+                <label for="mail">Email*:</label>
+                <input type="email" id="mail" name="user_email" placeholder="abc@xyz.com" required>
+
+                <label for="tel">Numer kontakti:</label>
+                <input type="tel" id="tel" placeholder="Perfshini prefiksin" name="user_num">
+
+
+            </fieldset>
+
+            <fieldset>
+                <legend><span class="number">2</span>Detajet e vizites mjekesore</legend>
+                <label for="appointment_for">Arsyeja e vizites*:</label>
+                <select id="appointment_for" name="appointment_for" required>
+          <option value="coffee">Pacient i ri</option>
+          <option value="meeting">Kontroll i pergjithshem</option>
+          <option value="Business">Vizite tek dermatologu</option>
+          <option value="lunch">Vizite tek kardiologu</option>
+          <option value="skype">Vizite tek mjeku ortoped</option>
+        </select>
+                <label for="appointment_description">Pershkrimi i takimit:</label>
+                <textarea id="appointment_description" name="appointment_description" placeholder=" Jam i/e interesesuar per nje kontroll te pergjithshem"></textarea>
+                <label for="date">Data*:</label>
+                <input type="date" name="date" value="" required></input>
+                <br>
+                <label for="time">Ora*:</label>
+                <input type="time" name="time" value="" required></input>
+            </fieldset>
+            <button type="submit">Konfirmo kerkesen per takim</button>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,2 @@
+INSERT INTO users (username, fjalekalimi, roleId)  VALUES ('Eva123', MD5('Eva1234!'),'2'); //rregjistrim i Admin
+
